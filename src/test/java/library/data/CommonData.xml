@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>Browser and Environment variables</comment>
+    <entry key="browser">Chrome</entry>
+    <!--<entry key="browser">Safari</entry>-->
+    <!--<entry key="browser">Remote</entry>-->
+    <!--<entry key="browser">Firefox</entry>-->
+    <!--<entry key="browser">InternetExplorer</entry>-->
+    <!--<entry key="ie_version">9</entry>-->
+    <!--<entry key="browser">HTMLUnit</entry>-->
+    <!--<entry key="browser">SauceLabs</entry>-->
+    <entry key="record">False</entry>
+    <entry key="screen_shot_location">C:\Selenium\TestResults\Screenshots\</entry>
+
+    <!--remote-->
+    <!--<entry key="remoteUrl">http://192.168.0.101:8001/wd/hub</entry>-->
+
+    <!--local Grid-->
+    <entry key="remoteUrl">http://192.168.0.140:7010/wd/hub</entry>
+
+    <!--saucelabs-->
+    <!--<entry key="remoteUrl">http://pavandeepp:61ea02b2-d9ee-4167-8e36-a4f7cb2295a0@ondemand.saucelabs.com:80/wd/hub-->
+    <!--</entry>-->
+
+    <entry key="url">http://www.realestate.com.au/buy</entry>
+
+</properties>
