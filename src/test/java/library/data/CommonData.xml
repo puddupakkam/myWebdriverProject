@@ -17,7 +17,7 @@
     <!--<entry key="remoteUrl">http://192.168.0.101:8001/wd/hub</entry>-->
 
     <!--local Grid-->
-    <entry key="remoteUrl">http://192.168.0.140:7010/wd/hub</entry>
+    <entry key="remoteUrl">http://192.00.0.140:7010/wd/hub</entry>
 
     <!--saucelabs-->
     <!--<entry key="remoteUrl">http://pavandeepp:61ea02b2-d9ee-4167-8e36-a4f7cb2295a0@ondemand.saucelabs.com:80/wd/hub-->
