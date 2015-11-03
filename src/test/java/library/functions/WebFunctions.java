@@ -1,4 +1,18 @@
 /*
+ * Copyright (c) [2014] - [2015], [Pavandeep Puddupakkam] and the [SeleniumWiki] contributors.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ */
+
+/*
  * This source file is proprietary property of Pavandeep Puddupakkam.
  */
 package library.functions;
@@ -7,7 +21,10 @@ import org.monte.media.Format;
 import org.monte.media.FormatKeys;
 import org.monte.media.math.Rational;
 import org.monte.screenrecorder.ScreenRecorder;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -39,15 +56,6 @@ public class WebFunctions extends BaseFunctions {
         record = Boolean.parseBoolean(getData().commonData("record"));
         resultcount = 0;
     }
-
-    public WebElement findElement(By by) {
-        WebElement elem = getWebDriver().findElement(by);
-        if (getWebDriver() instanceof JavascriptExecutor) {
-            ((JavascriptExecutor) getWebDriver()).executeScript("arguments[0].style.border='3px solid red'", elem);
-        }
-        return elem;
-    }
-
 
     public void rightClick(By by) {
         new Actions(getWebDriver()).moveToElement(getWebDriver().findElement(by)).contextClick(getWebDriver().findElement(by)).perform();

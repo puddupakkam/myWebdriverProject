@@ -1,4 +1,18 @@
 /*
+ * Copyright (c) [2014] - [2015], [Pavandeep Puddupakkam] and the [SeleniumWiki] contributors.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ */
+
+/*
  * This source file is proprietary property of Pavandeep Puddupakkam.
  */
 package library.functions;
@@ -18,10 +32,6 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import static org.openqa.selenium.By.xpath;
 import static org.testng.Assert.assertTrue;
@@ -245,21 +255,4 @@ public class CommonFunctions extends WebFunctions {
                 .sendKeys(Keys.chord(Keys.CONTROL, "a"), value).perform();
     }
 
-    public String convertDOB(String dob) throws ParseException {
-        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        Date newdob = formatter.parse(dob);
-        formatter = new SimpleDateFormat("dd MMM yyyy");
-        return formatter.format(newdob);
-    }
-
-    public String revertDOB(String dob) throws ParseException {
-        DateFormat formatter = new SimpleDateFormat("dd MMM yyyy");
-        Date newdob = formatter.parse(dob);
-        formatter = new SimpleDateFormat("dd/MM/yyyy");
-        return formatter.format(newdob);
-    }
-
-    public String nameElement(String name) throws ParseException {
-        return "//input[@name='" + name + "']";
-    }
 }
