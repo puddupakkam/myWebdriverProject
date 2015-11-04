@@ -69,10 +69,6 @@ public class BaseFunctions {
         return rxml;
     }
 
-    protected String getUrlString() {
-        return urlString;
-    }
-
     protected void start(String remoteWebDriverUrl) throws MalformedURLException {
         if (webDriver == null) {
             this.remoteWebDriverUrl = remoteWebDriverUrl;
@@ -82,7 +78,6 @@ public class BaseFunctions {
                             .createWebDriver(
                                     browser,
                                     isEmpty(remoteWebDriverUrl) ? remoteUrl : remoteWebDriverUrl);
-            webDriver.get(getUrlString());
             if (webDriver instanceof RemoteWebDriver) {
                 String remoteBrowserName = ((RemoteWebDriver) webDriver).getCapabilities().getBrowserName();
                 if ("internet explorer".equalsIgnoreCase(remoteBrowserName)) {

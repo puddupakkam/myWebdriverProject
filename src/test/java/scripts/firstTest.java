@@ -1,3 +1,17 @@
+/*
+ * Copyright (c) [2014] - [2015], [Pavandeep Puddupakkam] and the [SeleniumWiki] contributors.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ */
+
 package scripts;
 
 import library.functions.CommonFunctions;
@@ -13,6 +27,7 @@ public class firstTest extends CommonFunctions {
     @Test(description = "My First Test")
     public void myFirstTest() throws Exception {
         pass("Test Report: My First Test on " + getBrowser() + " browser");
+        open("http://www.realestate.com.au/buy");
         waitForElementPresent(By.xpath("//input[@name='where']"));
         type(By.xpath("//input[@name='where']"), "Thornleigh");
         click(By.cssSelector("button.rui-search-button"));

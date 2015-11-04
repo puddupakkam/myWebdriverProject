@@ -10,3 +10,7 @@ The above copyright notice and this permission notice shall be included in all c
 I will update the read me file soon. The file will have information of the changes that you need to do get you started with webdriver.
 Install TestNG on Eclipse to run the scripts:
 http://testng.org/doc/download.html
+
+To start the selenium remote server
+c:
+java -jar C:\Softwares\selenium-server-standalone-2.48.2.jar -role node -hub http://192.168.0.140:4444/grid/register -port 7010 -browser "maxInstances=10, platform=WINDOWS"  -Dwebdriver.chrome.driver="C:\Softwares\chromedriver.exe" -Dwebdriver.ie.driver="C:\Softwares\IEDriverServer_x64_2.48.0\IEDriverServer.exe"

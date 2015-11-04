@@ -67,6 +67,10 @@ public class CommonFunctions extends WebFunctions {
         super.stop();
     }
 
+    public void open(String value) {
+        getWebDriver().get(value);
+    }
+
     public int openAndVerifyPDFDoc(By by, String... checkValue) throws InterruptedException, IOException {
         for (String childWindow : getWebDriver().getWindowHandles()) {
             getWebDriver().switchTo().window(childWindow);
