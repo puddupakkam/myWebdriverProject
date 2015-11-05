@@ -62,7 +62,7 @@ public class WebFunctions extends BaseFunctions {
     }
 
     public void click(By by) throws InterruptedException, IOException {
-        waitForElementPresent(by, 5);
+        waitForPageObject(by, 5);
         try {
             getWebDriver().findElement(by).click();
         } catch (Exception e) {
@@ -151,22 +151,22 @@ public class WebFunctions extends BaseFunctions {
         this.screenRecorder.stop();
     }
 
-    public void waitForElementPresent(By by) throws InterruptedException {
+    public void waitForPageObject(By by) throws InterruptedException {
         for (int second = 0; ; second++) {
             if (second >= 15)
                 break;
-            if (isElementPresent(by))
+            if (isPageObjectPresent(by))
                 break;
             Thread.sleep(1000);
         }
     }
 
-    public void waitForElementPresent(By by, int i) throws InterruptedException {
+    public void waitForPageObject(By by, int i) throws InterruptedException {
         for (int second = 0; second <= i; second++) {
             if (second >= i) {
                 break;
             }
-            if (isElementPresent(by)) {
+            if (isPageObjectPresent(by)) {
                 break;
             }
             Thread.sleep(1000);
@@ -176,7 +176,7 @@ public class WebFunctions extends BaseFunctions {
     public void waitForElementNotPresent(By by) throws IOException {
         if (!getBrowser().equalsIgnoreCase("InternetExplorer")) {
             try {
-                if (isElementPresent(by)) {
+                if (isPageObjectPresent(by)) {
                     WebDriverWait wait = new WebDriverWait(getWebDriver(), 120);
                     Boolean res = wait.until(ExpectedConditions.stalenessOf(getWebDriver().findElement(by)));
                 }
@@ -195,7 +195,7 @@ public class WebFunctions extends BaseFunctions {
         }
     }
 
-    public void waitForOneElementPresent(int i, By... by) throws InterruptedException, IOException {
+    public void waitForAtlestOnePageObject(int i, By... by) throws InterruptedException, IOException {
         boolean found = false;
         for (int second = 0; second <= i; second++) {
             if (second >= i) {
@@ -203,9 +203,9 @@ public class WebFunctions extends BaseFunctions {
                 break;
             }
             for (By singleBy : by) {
-                if (isElementPresent(singleBy)) {
+                if (isPageObjectPresent(singleBy)) {
                     try {
-                        waitForElementVisible(singleBy);
+                        waitForPageObjectVisible(singleBy);
                     } catch (Exception e) {
                         takeScreenshot();
                     }
@@ -219,13 +219,13 @@ public class WebFunctions extends BaseFunctions {
         }
     }
 
-    public void waitForMultipleElements(int i, By... by) throws InterruptedException, IOException {
+    public void waitForMultiplePageObjects(int i, By... by) throws InterruptedException, IOException {
         for (int second = 0; second <= i; second++) {
             if (second >= i) {
                 takeScreenshot();
                 break;
             }
-            if (areAllElementsPresent(by)) {
+            if (areAllPageObjectsPresent(by)) {
                 for (By singleBy : by) {
                 }
                 break;
@@ -234,29 +234,29 @@ public class WebFunctions extends BaseFunctions {
         }
     }
 
-    public boolean areAllElementsPresent(By... by) {
+    public boolean areAllPageObjectsPresent(By... by) {
         for (By singleBy : by) {
-            if (!isElementPresent(singleBy)) {
+            if (!isPageObjectPresent(singleBy)) {
                 return false;
             }
         }
         return true;
     }
 
-    public void waitLongerForElementPresent(By by) throws InterruptedException {
+    public void waitLongerForPageObject(By by) throws InterruptedException {
         for (int second = 0; ; second++) {
             if (second >= 360)
                 break;
-            if (isElementPresent(by)) {
+            if (isPageObjectPresent(by)) {
                 break;
             }
             Thread.sleep(1000);
         }
     }
 
-    public boolean isElementVisible(final By by) throws InterruptedException {
+    public boolean isPageObjectVisible(final By by) throws InterruptedException {
         boolean value = false;
-        waitForElementPresent(by);
+        waitForPageObject(by);
         if (getWebDriver().findElement(by).isDisplayed()) {
             value = true;
         }
@@ -264,27 +264,27 @@ public class WebFunctions extends BaseFunctions {
     }
 
 
-    public void waitForElementVisible(By by) throws InterruptedException {
+    public void waitForPageObjectVisible(By by) throws InterruptedException {
         for (int second = 0; ; second++) {
             if (second >= 15)
                 break;
-            if (isElementVisible(by))
+            if (isPageObjectVisible(by))
                 break;
             Thread.sleep(1000);
         }
     }
 
-    public void waitForElementVisible(By by, int time) throws InterruptedException {
+    public void waitForPageObjectVisible(By by, int time) throws InterruptedException {
         for (int second = 0; ; second++) {
             if (second >= time)
                 break;
-            if (isElementVisible(by))
+            if (isPageObjectVisible(by))
                 break;
             Thread.sleep(1000);
         }
     }
 
-    public boolean isElementPresent(By by) {
+    public boolean isPageObjectPresent(By by) {
         try {
             getWebDriver().findElement(by);
             return true;
@@ -300,10 +300,9 @@ public class WebFunctions extends BaseFunctions {
 
     public String getValue(By by) {
         String value = "";
-        if (isElementPresent(by)) {
+        if (isPageObjectPresent(by)) {
             value = getWebDriver().findElement(by).getAttribute("value");
         }
         return value;
     }
-
 }

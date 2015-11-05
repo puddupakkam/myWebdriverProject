@@ -67,7 +67,7 @@ public class CommonFunctions extends WebFunctions {
         super.stop();
     }
 
-    public void open(String value) {
+    public void openWebPage(String value) {
         getWebDriver().get(value);
     }
 
@@ -76,7 +76,7 @@ public class CommonFunctions extends WebFunctions {
             getWebDriver().switchTo().window(childWindow);
         }
         String httphead_url = getWebDriver().getCurrentUrl();
-        if (httphead_url.contains("/resource/document/open")) {
+        if (httphead_url.contains("/resource/document/openWebPage")) {
             pass("The document is opened in a new window");
             resultcount = resultcount + checkPDFContent(checkValue);
         }
@@ -113,7 +113,7 @@ public class CommonFunctions extends WebFunctions {
 
     public int checkElementUsingXPath(String element, String message) throws IOException {
         try {
-            assertTrue(isElementPresent(xpath(element)));
+            assertTrue(isPageObjectPresent(xpath(element)));
             pass(message);
         } catch (AssertionError e) {
             message = message.contains("is displayed") ? message.replace("is displayed",
@@ -137,7 +137,7 @@ public class CommonFunctions extends WebFunctions {
 
     public int checkElementUsing(By element, String message) throws IOException {
         try {
-            assertTrue(isElementPresent(element));
+            assertTrue(isPageObjectPresent(element));
             pass(message);
         } catch (AssertionError e) {
             message = message.contains("is displayed") ? message.replace("is displayed",
@@ -186,7 +186,7 @@ public class CommonFunctions extends WebFunctions {
 
     public int checkElement(By by, String message) throws IOException {
         try {
-            assertTrue(isElementPresent(by));
+            assertTrue(isPageObjectPresent(by));
             pass(message);
         } catch (AssertionError e) {
             message = message.contains("is displayed") ? message.replace("is displayed",
@@ -247,16 +247,15 @@ public class CommonFunctions extends WebFunctions {
     public void typeAll(String[] path, String[] value) throws InterruptedException {
         int len = path.length;
         for (int i = 0; i <= (len - 1); i++) {
-            if (isElementPresent(xpath(path[i]))) {
+            if (isPageObjectPresent(xpath(path[i]))) {
                 type(xpath(path[i]), value[i]);
             }
         }
     }
 
     public void actionType(By by, String value) throws InterruptedException {
-        waitForElementPresent((by));
+        waitForPageObject((by));
         new Actions(getWebDriver()).moveToElement(getWebDriver().findElement(by)).click()
                 .sendKeys(Keys.chord(Keys.CONTROL, "a"), value).perform();
     }
-
 }
